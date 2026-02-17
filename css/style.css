@@ -106,11 +106,10 @@ img {
     text-align: center;
 }
 
-
-
 /* 記事部分 */
-article {
-    width: 74%; /* % で指定することで画面幅が変わっても伸縮するようになる */
+article {       /* バナー追加で width を73%から60%に変更した */
+    width: 60%; /* % で指定することで画面幅が変わっても伸縮するようになる */
+    /* order: 2;    2番目に表示される */
 }
 .post-info {
     position: relative; /*相対位置への配置*/
@@ -156,7 +155,11 @@ article p {
 /* サイドバー */
 aside {
     width: 22%;
+    /* order: 3;    3番目に表示される */
 }
+/* .ad {
+    order: 1;    1番目に表示される
+} */
 .news-contents {
     display: flex;
     justify-content: space-around;
@@ -185,6 +188,43 @@ aside p {
 }
 .sub-menu a:hover {
     color: #0bd;
+}
+
+/* MENU
+-------------------------------- */
+#menu {
+    background-image: url(../images/menu-bg.jpg);
+    min-height: 100vh;
+}
+.menu-content {
+    max-width: 560px;
+    margin-top: 10%;
+}
+.menu-content .page-title {
+    text-align: center;
+}
+.menu-content p {
+    font-size: 1.125rem;
+    margin-top: 10px 0 0;
+}
+.grid {
+    display: grid;
+    gap: 26px;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    /* grid-template-columns: repeat(3, 1fr); 上記の省略方法*/
+    /* grid-template-columns: repeat(3, minmax(240px, 1fr)); 上記に加え最小値を設定*/
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 6%;
+    margin-bottom: 50px;
+}
+.big-box {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+.big-box img {  /* 領域に画像サイズを合わせる */
+    width: 100%;
+    height: 94%;
+    object-fit: cover;  /* はみ出した画像のトリミング(これがないと 100:94 のいびつな割合にみる) */
 }
 
 /* FOOTER
@@ -260,5 +300,17 @@ footer p {
     .post-title,
     .post-cat {
         margin-left: 80px;
+    }
+
+    /* MENU */
+    .menu-content {
+        margin-top: 20%;
+    }
+    .big-box {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    .big-box img {
+        height: auto;
     }
 }
